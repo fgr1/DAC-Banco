@@ -1,5 +1,6 @@
 export class Cep {
   constructor(
+    public id?: string,
     public cep?: string,
     public logradouro?: string,
     public complemento?: string,
