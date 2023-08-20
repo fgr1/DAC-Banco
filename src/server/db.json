@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Maria",
+      "cpf": 123,
+      "email": "email@email.com",
+      "password": null,
+      "cellphone": 123,
+      "type": "client",
+      "salary": 5000,
+      "address": {
+        "cep": "82840-180",
+        "logradouro": "Rua Gastão Luiz Cruls",
+        "complemento": "até 1844/1845",
+        "bairro": "Bairro Alto",
+        "localidade": "Curitiba",
+        "uf": "PR"
+      }
+    }
+  ]
+}
