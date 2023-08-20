@@ -31,7 +31,7 @@
           <div class="text-center text-muted mb-4">
             <p>Autocadastro</p>
           </div>
-          <form role="form" [formGroup]="accountForm" (submit)="onSubmit()">
+          <form role="form" [formGroup]="clientForm" (submit)="onSubmit()">
             <div class="form-group">
               <div class="input-group input-group-alternative mb-3">
                 <div class="input-group-prepend">
@@ -47,7 +47,19 @@
                   required
                 />
               </div>
+              <div
+                *ngIf="
+                  clientForm.controls['name'].invalid &&
+                  (clientForm.controls['name'].dirty ||
+                    clientForm.controls['name'].touched)
+                "
+              >
+                <div *ngIf="clientForm.controls['name'].errors.required">
+                  <p class="text-danger">Nome é obrigatório</p>
+                </div>
+              </div>
             </div>
+
             <div class="form-group">
               <div class="input-group input-group-alternative mb-3">
                 <div class="input-group-prepend">
@@ -62,6 +74,17 @@
                   formControlName="cpf"
                   required
                 />
+              </div>
+              <div
+                *ngIf="
+                  clientForm.controls['cpf'].invalid &&
+                  (clientForm.controls['cpf'].dirty ||
+                    clientForm.controls['cpf'].touched)
+                "
+              >
+                <div *ngIf="clientForm.controls['cpf'].errors.required">
+                  <p class="text-danger">CPF é obrigatório</p>
+                </div>
               </div>
             </div>
             <div class="form-group">
@@ -79,6 +102,17 @@
                   required
                 />
               </div>
+              <div
+                *ngIf="
+                  clientForm.controls['email'].invalid &&
+                  (clientForm.controls['email'].dirty ||
+                    clientForm.controls['email'].touched)
+                "
+              >
+                <div *ngIf="clientForm.controls['email'].errors.required">
+                  <p class="text-danger">Email é obrigatório</p>
+                </div>
+              </div>
             </div>
             <div class="form-group">
               <div class="input-group input-group-alternative mb-3">
@@ -95,6 +129,17 @@
                   required
                 />
               </div>
+              <div
+                *ngIf="
+                  clientForm.controls['salary'].invalid &&
+                  (clientForm.controls['salary'].dirty ||
+                    clientForm.controls['salary'].touched)
+                "
+              >
+                <div *ngIf="clientForm.controls['salary'].errors.required">
+                  <p class="text-danger">Salário é obrigatório</p>
+                </div>
+              </div>
             </div>
             <div class="form-group">
               <div class="input-group input-group-alternative mb-3">
@@ -110,6 +155,17 @@
                   formControlName="cellphone"
                   required
                 />
+              </div>
+              <div
+                *ngIf="
+                  clientForm.controls['cellphone'].invalid &&
+                  (clientForm.controls['cellphone'].dirty ||
+                    clientForm.controls['cellphone'].touched)
+                "
+              >
+                <div *ngIf="clientForm.controls['cellphone'].errors.required">
+                  <p class="text-danger">Telefone é obrigatório</p>
+                </div>
               </div>
             </div>
             <div class="form-group">
@@ -128,22 +184,16 @@
                   required
                 />
               </div>
-            </div>
-
-            <div class="form-group">
-              <div class="input-group input-group-alternative mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"
-                    ><i class="ni ni-pin-3"></i
-                  ></span>
+              <div
+                *ngIf="
+                  clientForm.controls['cep'].invalid &&
+                  (clientForm.controls['cep'].dirty ||
+                    clientForm.controls['cep'].touched)
+                "
+              >
+                <div *ngIf="clientForm.controls['cep'].errors.required">
+                  <p class="text-danger">CEP é obrigatório</p>
                 </div>
-                <input
-                  class="form-control"
-                  placeholder="Cidade"
-                  type="text"
-                  formControlName="city"
-                  readonly
-                />
               </div>
             </div>
 
@@ -158,8 +208,70 @@
                   class="form-control"
                   placeholder="UF"
                   type="text"
-                  formControlName="state"
+                  formControlName="uf"
                   readonly
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"
+                    ><i class="ni ni-pin-3"></i
+                  ></span>
+                </div>
+                <input
+                  class="form-control"
+                  placeholder="Cidade"
+                  type="text"
+                  formControlName="localidade"
+                  readonly
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"
+                    ><i class="ni ni-pin-3"></i
+                  ></span>
+                </div>
+                <input
+                  class="form-control"
+                  placeholder="Bairro"
+                  type="text"
+                  formControlName="bairro"
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"
+                    ><i class="ni ni-pin-3"></i
+                  ></span>
+                </div>
+                <input
+                  class="form-control"
+                  placeholder="Logradouro"
+                  type="text"
+                  formControlName="logradouro"
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"
+                    ><i class="ni ni-pin-3"></i
+                  ></span>
+                </div>
+                <input
+                  class="form-control"
+                  placeholder="Complemento"
+                  type="text"
+                  formControlName="complemento"
                 />
               </div>
             </div>

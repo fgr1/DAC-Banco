@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { CepService } from "src/app/services/cep.service";
+import { CepService, ClientService } from "src/app/services";
 import { MODEL } from "src/app/shared";
+import { Address, Client } from "src/app/shared/models";
 
 @Component({
   selector: "app-register",
@@ -9,28 +10,33 @@ import { MODEL } from "src/app/shared";
   styleUrls: ["./register.component.scss"],
 })
 export class RegisterComponent implements OnInit {
-  public accountForm: FormGroup;
+  public clientForm: FormGroup;
 
-  constructor(private cepService: CepService, fb: FormBuilder) {
-    this.accountForm = fb.group({
+  constructor(
+    private cepService: CepService,
+    private clientService: ClientService,
+    fb: FormBuilder
+  ) {
+    this.clientForm = fb.group({
       name: ["", Validators.required],
       email: ["", Validators.required],
       cpf: ["", Validators.required],
       salary: ["", Validators.required],
       cellphone: ["", Validators.required],
-      city: ["", Validators.required],
-      state: ["", Validators.required],
       cep: ["", Validators.required],
+      logradouro: ["", Validators.required],
+      complemento: ["", Validators.required],
+      bairro: ["", Validators.required],
+      localidade: ["", Validators.required],
+      uf: ["", Validators.required],
     });
   }
 
   ngOnInit() {}
 
   private autocompleteAddress(cep: MODEL.Cep) {
-    const { localidade, uf } = cep;
-    this.accountForm.patchValue({
-      city: localidade,
-      state: uf,
+    this.clientForm.patchValue({
+      ...cep,
     });
   }
 
@@ -61,9 +67,49 @@ export class RegisterComponent implements OnInit {
   }
 
   public onSubmit() {
-    const { value, valid, errors } = this.accountForm;
-    const { username, email, cpf, tel, city, state, cep } = value;
+    const { value, valid } = this.clientForm;
 
-    console.log(value, valid, errors);
+    if (valid) {
+      const {
+        name,
+        salary,
+        cellphone,
+        email,
+        cep,
+        cpf,
+        uf,
+        localidade,
+        bairro,
+        logradouro,
+        complemento,
+      } = value;
+      const address = new Address(
+        cep,
+        logradouro,
+        complemento,
+        bairro,
+        localidade,
+        uf
+      );
+      const client = new Client(
+        null,
+        name,
+        cpf,
+        email,
+        null,
+        cellphone,
+        "client",
+        salary,
+        address
+      );
+
+      this.clientService.create(client).subscribe((client) => {
+        alert(
+          `${client.name}, conta criada com sucesso! Pendente de aprovação do gerente`
+        );
+      });
+    } else {
+      alert("Formulário inválido! Preencha todos os campos");
+    }
   }
 }
