@@ -20,9 +20,9 @@ export class RegisterComponent implements OnInit {
     private cepService: CepService,
     private clientService: ClientService,
     private bankAccountService: BankAccountService,
-    fb: FormBuilder
+    private fb: FormBuilder
   ) {
-    this.clientForm = fb.group({
+    this.clientForm = this.fb.group({
       name: ["", Validators.required],
       email: ["", Validators.required],
       cpf: ["", Validators.required],
