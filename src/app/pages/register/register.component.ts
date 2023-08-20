@@ -1,6 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { CepService, ClientService } from "src/app/services";
+import {
+  BankAccountService,
+  CepService,
+  ClientService,
+} from "src/app/services";
 import { MODEL } from "src/app/shared";
 import { Address, Client } from "src/app/shared/models";
 
@@ -15,6 +19,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     private cepService: CepService,
     private clientService: ClientService,
+    private bankAccountService: BankAccountService,
     fb: FormBuilder
   ) {
     this.clientForm = fb.group({
@@ -66,48 +71,57 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+  private dataFormBuilder(value): MODEL.Client {
+    const {
+      name,
+      salary,
+      cellphone,
+      email,
+      cep,
+      cpf,
+      uf,
+      localidade,
+      bairro,
+      logradouro,
+      complemento,
+    } = value;
+    const address = new Address(
+      cep,
+      logradouro,
+      complemento,
+      bairro,
+      localidade,
+      uf
+    );
+    const client = new Client(
+      null,
+      name,
+      cpf,
+      email,
+      null,
+      cellphone,
+      "client",
+      salary,
+      address
+    );
+
+    return client;
+  }
+
+  private createClient(client: MODEL.Client) {
+    this.clientService.create(client).subscribe((client) => {
+      alert(
+        `${client.name}, conta criada com sucesso! Pendente de aprovação do gerente`
+      );
+    });
+  }
+
   public onSubmit() {
     const { value, valid } = this.clientForm;
 
     if (valid) {
-      const {
-        name,
-        salary,
-        cellphone,
-        email,
-        cep,
-        cpf,
-        uf,
-        localidade,
-        bairro,
-        logradouro,
-        complemento,
-      } = value;
-      const address = new Address(
-        cep,
-        logradouro,
-        complemento,
-        bairro,
-        localidade,
-        uf
-      );
-      const client = new Client(
-        null,
-        name,
-        cpf,
-        email,
-        null,
-        cellphone,
-        "client",
-        salary,
-        address
-      );
-
-      this.clientService.create(client).subscribe((client) => {
-        alert(
-          `${client.name}, conta criada com sucesso! Pendente de aprovação do gerente`
-        );
-      });
+      const client = this.dataFormBuilder(value);
+      this.createClient(client);
     } else {
       alert("Formulário inválido! Preencha todos os campos");
     }
