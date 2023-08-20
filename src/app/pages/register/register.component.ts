@@ -109,11 +109,18 @@ export class RegisterComponent implements OnInit {
   }
 
   private createClient(client: MODEL.Client) {
-    this.clientService.create(client).subscribe((client) => {
-      alert(
-        `${client.name}, conta criada com sucesso! Pendente de aprovação do gerente`
-      );
-    });
+    this.clientService.create(client).subscribe(
+      (client) => {
+        alert(
+          `${client.name}, conta criada com sucesso! Pendente de aprovação do gerente`
+        );
+      },
+      (error) => {
+        alert(
+          `${client.name}, algo deu errado na criação da conta. Email enviado`
+        );
+      }
+    );
   }
 
   public onSubmit() {
