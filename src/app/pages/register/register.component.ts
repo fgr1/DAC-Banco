@@ -40,8 +40,13 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {}
 
   private autocompleteAddress(cep: MODEL.Cep) {
+    const { localidade, complemento, logradouro, bairro, uf } = cep;
     this.clientForm.patchValue({
-      ...cep,
+      uf,
+      localidade,
+      complemento,
+      logradouro,
+      bairro,
     });
   }
 
@@ -114,6 +119,7 @@ export class RegisterComponent implements OnInit {
         alert(
           `${client.name}, conta criada com sucesso! Pendente de aprovação do gerente`
         );
+        this.clientForm.reset();
       },
       (error) => {
         alert(
