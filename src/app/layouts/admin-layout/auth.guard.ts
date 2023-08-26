@@ -30,21 +30,20 @@ export class AuthGuard implements CanActivate {
       console.log("usuario logado", userLogged.type);
       const role = route.data?.["role"];
       console.log("role", role);
+
       if (role && role.indexOf(userLogged.type) === -1) {
-        // Se o perfil do usuário não está no perfil da rota
-        // vai para login
         this.router.navigate(["/login"], {
           queryParams: { error: "Proibido o acesso a " + url },
         });
         return false;
       }
-      // em qualquer outro caso, permite o acesso
       return true;
     }
-    // Se não está logado, vai para login
+
     this.router.navigate(["/login"], {
       queryParams: { error: "Deve fazer o login antes de acessar " + url },
     });
+
     return false;
   }
 }

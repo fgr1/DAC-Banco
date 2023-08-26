@@ -1,6 +1,7 @@
 import { Location } from "@angular/common";
 import { Component, ElementRef, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { AuthService } from "src/app/services";
 import { ROUTES } from "../sidebar/sidebar.component";
 
 @Component({
@@ -15,7 +16,8 @@ export class NavbarComponent implements OnInit {
   constructor(
     location: Location,
     private element: ElementRef,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {
     this.location = location;
   }
@@ -41,6 +43,7 @@ export class NavbarComponent implements OnInit {
     this.router.navigate([route]);
   }
   public handleLogout() {
+    this.authService.logout();
     this.handleNavigate("/login");
   }
 }

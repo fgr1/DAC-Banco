@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable, of } from "rxjs";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
+import { Observable } from "rxjs";
 import { environment as env } from "src/environments/environment";
 import { MODEL } from "../shared";
 
@@ -9,7 +9,7 @@ import { MODEL } from "../shared";
   providedIn: "root",
 })
 export class AuthService {
-  private BASE_URL = env.BASE_URL + "auth/";
+  private BASE_URL = env.BASE_URL + "users/";
   private httpOptions = {
     headers: new HttpHeaders({
       "Content-Type": "application/json",
@@ -29,19 +29,17 @@ export class AuthService {
   }
 
   login(login: MODEL.Login): Observable<MODEL.User | null> {
+    const params = new HttpParams()
+      .set("email", login.email)
+      .set("password", login.password);
+    return this.httpClient.get<MODEL.User | null>(this.BASE_URL, {
+      ...this.httpOptions,
+      params,
+    });
     // return this.httpClient.post<MODEL.Login | null>(this.BASE_URL, login, {
     //   ...this.httpOptions,
     // });
-    const user = new MODEL.User(
-      "1",
-      "Rickson",
-      "123",
-      "email@email.com",
-      "senha@123",
-      "123",
-      "client"
-    );
-    return of(user);
+    // TROCAR PARA ENDPOINT DE LOGIN
   }
 
   logout() {

@@ -38,17 +38,20 @@ export class LoginComponent implements OnInit {
 
   private Login(login: MODEL.Login) {
     this.authService.login(login).subscribe(
-      (user) => {
-        if (user !== null) {
+      (response) => {
+        const user = response[0]; //TROCAR PARA QUANDO VIER DO BACKEND, REMOVER ARRAY
+        console.log("usuario repsonse", user);
+        if (user !== null && user !== undefined) {
           this.authService.userLogged = user;
           this.handleNavigate(
-            user.type == "cliente" ? "/user-profile" : "/dashboard"
+            user.type == "client" ? "/user-profile" : "/dashboard"
           );
         } else {
           this.message = "Usuário/Senha inválidos.";
         }
       },
       (error) => {
+        console.log("erro para login", error);
         alert(`Ocorreu um erro ao logar`);
       }
     );
