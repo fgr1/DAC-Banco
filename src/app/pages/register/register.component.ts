@@ -122,6 +122,7 @@ export class RegisterComponent implements OnInit {
           `${client.name}, conta criada com sucesso! Pendente de aprovação do gerente`
         );
         this.clientForm.reset();
+        this.handleNavigate("/login");
       },
       (error) => {
         alert(
@@ -142,7 +143,7 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  public handleNavigate() {
-    this.router.navigate(["/login"]);
+  public handleNavigate(route: string) {
+    this.router.navigate([route]);
   }
 }

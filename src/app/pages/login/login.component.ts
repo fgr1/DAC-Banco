@@ -43,13 +43,14 @@ export class LoginComponent implements OnInit {
     if (valid) {
       const { email, password } = value;
       const login = new Login(email, password);
-      this.Login(login);
+      // this.Login(login);
+      this.handleNavigate("/dashboard");
     } else {
       alert("Formulário inválido! Preencha todos os campos");
     }
   }
 
-  public handleNavigate() {
-    this.router.navigate(["/register"]);
+  public handleNavigate(route: string) {
+    this.router.navigate([route]);
   }
 }
