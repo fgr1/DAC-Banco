@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 import { AuthService } from "src/app/services";
 import { MODEL } from "src/app/shared";
 import { Login } from "src/app/shared/models";
@@ -12,7 +13,11 @@ import { Login } from "src/app/shared/models";
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {
     this.loginForm = this.fb.group({
       email: ["", Validators.required],
       password: ["", Validators.required],
@@ -42,5 +47,9 @@ export class LoginComponent implements OnInit {
     } else {
       alert("Formulário inválido! Preencha todos os campos");
     }
+  }
+
+  public handleNavigate() {
+    this.router.navigate(["/register"]);
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 import {
   BankAccountService,
   CepService,
@@ -20,7 +21,8 @@ export class RegisterComponent implements OnInit {
     private cepService: CepService,
     private clientService: ClientService,
     private bankAccountService: BankAccountService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) {
     this.clientForm = this.fb.group({
       name: ["", Validators.required],
@@ -138,5 +140,9 @@ export class RegisterComponent implements OnInit {
     } else {
       alert("Formulário inválido! Preencha todos os campos");
     }
+  }
+
+  public handleNavigate() {
+    this.router.navigate(["/login"]);
   }
 }
