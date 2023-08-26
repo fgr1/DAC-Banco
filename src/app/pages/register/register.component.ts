@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 import {
   BankAccountService,
   CepService,
@@ -20,7 +21,8 @@ export class RegisterComponent implements OnInit {
     private cepService: CepService,
     private clientService: ClientService,
     private bankAccountService: BankAccountService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) {
     this.clientForm = this.fb.group({
       name: ["", Validators.required],
@@ -40,8 +42,13 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {}
 
   private autocompleteAddress(cep: MODEL.Cep) {
+    const { localidade, complemento, logradouro, bairro, uf } = cep;
     this.clientForm.patchValue({
-      ...cep,
+      uf,
+      localidade,
+      complemento,
+      logradouro,
+      bairro,
     });
   }
 
@@ -114,6 +121,8 @@ export class RegisterComponent implements OnInit {
         alert(
           `${client.name}, conta criada com sucesso! Pendente de aprovação do gerente`
         );
+        this.clientForm.reset();
+        this.handleNavigate("/login");
       },
       (error) => {
         alert(
@@ -132,5 +141,9 @@ export class RegisterComponent implements OnInit {
     } else {
       alert("Formulário inválido! Preencha todos os campos");
     }
+  }
+
+  public handleNavigate(route: string) {
+    this.router.navigate([route]);
   }
 }
