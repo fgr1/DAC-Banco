@@ -35,6 +35,15 @@
         "localidade": "Curitiba",
         "uf": "PR"
       }
+    },
+    {
+      "id": 3,
+      "name": "Pedro",
+      "cpf": 123,
+      "email": "manager@email.com",
+      "password": "123",
+      "cellphone": 123,
+      "type": "manager"
     }
   ]
 }

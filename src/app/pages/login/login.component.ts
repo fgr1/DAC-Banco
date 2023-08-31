@@ -43,9 +43,7 @@ export class LoginComponent implements OnInit {
         console.log("usuario repsonse", user);
         if (user !== null && user !== undefined) {
           this.authService.userLogged = user;
-          this.handleNavigate(
-            user.type == "client" ? "/user-profile" : "/dashboard"
-          );
+          this.handleNavigate(user.type);
         } else {
           this.message = "Usuário/Senha inválidos.";
         }
@@ -69,7 +67,23 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  public handleNavigate(route: string) {
+  public handleNavigate(userType: string) {
+    let route: string;
+
+    switch (userType) {
+      case "client":
+        route = "/user-profile";
+        break;
+      case "administrator":
+        route = "/dashboard";
+        break;
+      case "manager":
+        route = "/signup-validation";
+        break;
+      default:
+        route = "/dashboard";
+    }
+
     this.router.navigate([route]);
   }
 }
