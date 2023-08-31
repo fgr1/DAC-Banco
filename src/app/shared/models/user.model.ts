@@ -6,6 +6,6 @@ export class User {
     public email?: string,
     public password?: string,
     public cellphone?: string,
-    public type?: string
+    public profile?: string
   ) {}
 }

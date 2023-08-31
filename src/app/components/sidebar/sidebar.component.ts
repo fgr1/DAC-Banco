@@ -61,7 +61,7 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
     this.menuItems = ROUTES.filter((menuItem) => {
-      if (menuItem?.permission?.includes(this.userLogged.type)) {
+      if (menuItem?.permission?.includes(this.userLogged.profile)) {
         return menuItem;
       }
     });

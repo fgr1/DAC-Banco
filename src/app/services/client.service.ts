@@ -9,7 +9,7 @@ import { MODEL } from "../shared";
   providedIn: "root",
 })
 export class ClientService {
-  private BASE_URL = env.BASE_URL + "users/";
+  private BASE_URL = env.BASE_URL + "user";
   private httpOptions = {
     headers: new HttpHeaders({
       "Content-Type": "application/json",
