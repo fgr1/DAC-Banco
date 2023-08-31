@@ -46,6 +46,20 @@ export const ROUTES: RouteInfo[] = [
     class: "",
     permission: ["client"],
   },
+  {
+    path: "/signup-validation",
+    title: "Gerenciar auto-cadastro",
+    icon: "ni-check-bold text-green",
+    class: "",
+    permission: ["manager"],
+  },
+  {
+    path: "/clients",
+    title: "Clientes",
+    icon: "ni-single-02 text-blue",
+    class: "",
+    permission: ["manager"],
+  }
 ];
 
 @Component({
