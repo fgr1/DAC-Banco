@@ -13,7 +13,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { ClientsComponent } from './pages/clients/clients.component';
-import { DepositoComponent } from './pages/deposito/deposito.component';
 
 @NgModule({
   imports: [
@@ -23,8 +22,7 @@ import { DepositoComponent } from './pages/deposito/deposito.component';
     ComponentsModule,
     NgbModule,
     RouterModule,
-    AppRoutingModule,
-    DepositoComponent
+    AppRoutingModule
   ],
   declarations: [
     AppComponent,
