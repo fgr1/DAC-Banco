@@ -8,6 +8,7 @@ import { UserProfileComponent } from "../../pages/user-profile/user-profile.comp
 import { SignupValidationComponent } from "src/app/pages/signup-validation/signup-validation.component";
 import { AuthGuard } from "./auth.guard";
 import { ClientsComponent } from "src/app/pages/clients/clients.component";
+import { ClientComponent } from "src/app/pages/client/client.component";
 
 export const AdminLayoutRoutes: Routes = [
   { path: "", redirectTo: "login", pathMatch: "full" },
@@ -65,6 +66,14 @@ export const AdminLayoutRoutes: Routes = [
     canActivate: [AuthGuard],
     data: {
       role: "administrator",
+    },
+  },
+  {
+    path: "client/:id",
+    component: ClientComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: "manager",
     },
   },
 ];
