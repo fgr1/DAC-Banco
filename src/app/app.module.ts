@@ -13,6 +13,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { ClientsComponent } from './pages/clients/clients.component';
+import { ClientComponent } from './pages/client/client.component';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { ClientsComponent } from './pages/clients/clients.component';
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    ClientsComponent
+    ClientsComponent,
+    ClientComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
