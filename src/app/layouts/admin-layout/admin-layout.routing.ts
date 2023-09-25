@@ -1,14 +1,17 @@
 import { Routes } from "@angular/router";
 
+import { ClientComponent } from "src/app/pages/client/client.component";
+import { ClientsComponent } from "src/app/pages/clients/clients.component";
+import { SignupValidationComponent } from "src/app/pages/signup-validation/signup-validation.component";
 import { DashboardComponent } from "../../pages/dashboard/dashboard.component";
+import { DepositoComponent } from "../../pages/deposito/deposito.component";
+import { ExtratoComponent } from "../../pages/extrato/extrato.component";
 import { IconsComponent } from "../../pages/icons/icons.component";
 import { MapsComponent } from "../../pages/maps/maps.component";
-import { TablesComponent } from "../../pages/tables/tables.component";
+import { SaqueComponent } from "../../pages/saque/saque.component";
+import { TransferenciaComponent } from "../../pages/transferencia/transferencia.component";
 import { UserProfileComponent } from "../../pages/user-profile/user-profile.component";
-import { SignupValidationComponent } from "src/app/pages/signup-validation/signup-validation.component";
 import { AuthGuard } from "./auth.guard";
-import { ClientsComponent } from "src/app/pages/clients/clients.component";
-import { ClientComponent } from "src/app/pages/client/client.component";
 
 export const AdminLayoutRoutes: Routes = [
   { path: "", redirectTo: "login", pathMatch: "full" },
@@ -45,8 +48,32 @@ export const AdminLayoutRoutes: Routes = [
     },
   },
   {
-    path: "tables",
-    component: TablesComponent,
+    path: "saque",
+    component: SaqueComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: "client",
+    },
+  },
+  {
+    path: "deposito",
+    component: DepositoComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: "client",
+    },
+  },
+  {
+    path: "transferencia",
+    component: TransferenciaComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: "client",
+    },
+  },
+  {
+    path: "extrato",
+    component: ExtratoComponent,
     canActivate: [AuthGuard],
     data: {
       role: "client",
