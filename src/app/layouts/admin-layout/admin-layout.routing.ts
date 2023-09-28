@@ -4,6 +4,8 @@ import { ClientComponent } from "src/app/pages/client/client.component";
 import { ClientsComponent } from "src/app/pages/clients/clients.component";
 import { SignupValidationComponent } from "src/app/pages/signup-validation/signup-validation.component";
 import { DashboardComponent } from "../../pages/dashboard/dashboard.component";
+import { AdminComponent } from "src/app/pages/admin/admin.component";
+import { ManagersComponent } from "src/app/pages/managers/managers.component";
 import { DepositoComponent } from "../../pages/deposito/deposito.component";
 import { ExtratoComponent } from "../../pages/extrato/extrato.component";
 import { IconsComponent } from "../../pages/icons/icons.component";
@@ -16,8 +18,8 @@ import { AuthGuard } from "./auth.guard";
 export const AdminLayoutRoutes: Routes = [
   { path: "", redirectTo: "login", pathMatch: "full" },
   {
-    path: "dashboard",
-    component: DashboardComponent,
+    path: "admin",
+    component: AdminComponent,
     canActivate: [AuthGuard],
     data: {
       role: "administrator",
@@ -80,16 +82,8 @@ export const AdminLayoutRoutes: Routes = [
     },
   },
   {
-    path: "icons",
-    component: IconsComponent,
-    canActivate: [AuthGuard],
-    data: {
-      role: "administrator",
-    },
-  },
-  {
-    path: "maps",
-    component: MapsComponent,
+    path: "managers",
+    component: ManagersComponent,
     canActivate: [AuthGuard],
     data: {
       role: "administrator",
