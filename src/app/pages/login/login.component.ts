@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit {
         route = "/user-profile";
         break;
       case "administrator":
-        route = "/dashboard";
+        route = "/admin";
         break;
       case "manager":
         route = "/signup-validation";
