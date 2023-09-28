@@ -1,0 +1,128 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body">
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid mt--7">
+    <div class="row">
+      <div class="col-xl-8">
+        <div class="card shadow">
+          <div class="card-header bg-transparent">
+            <div class="row align-items-center">
+              <div class="col">
+                <h6 class="text-uppercase text-muted ls-1 mb-1">Gerentes</h6>
+                <h2 class="mb-0">Lista de Gerentes</h2>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">CPF</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Telefone</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody> 
+  <!--                 <tr *ngFor="let manager of managers">
+                    <th scope="row">{{ manager.name }}</th>
+                    <td>{{ manager.cpf }}</td>
+                    <td>{{ manager.email }}</td>
+                    <td>{{ manager.cellphone }}</td> -->
+                  <tr>
+                    <th></th>
+                    <td>111.111.111-11</td>
+                    <td>manager@email.com</td>
+                    <td>41 99999 9999</td>
+                    <td>
+                      <!-- <button type="button" class="btn btn-secondary mx-2" (click)="editManager(manager)">
+                        Editar
+                      </button>
+                      <button type="button" class="btn btn-danger mx-2" (click)="deleteManager(manager.id)">
+                        Excluir
+                      </button> -->
+                      <button type="button" class="btn btn-secondary mx-2">
+                        Editar
+                      </button>
+                      <button type="button" class="btn btn-danger mx-2">
+                        Excluir
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-4 mb-5 mb-xl-0">
+        <div class="card bg-trasparent-info shadow">
+          <div class="card-header bg-transparent">
+            <div class="row align-items-center">
+              <div class="col">
+                <h6 class="text-uppercase text-muted ls-1 mb-1">Formulário</h6>
+                <h2 class="mb-0">Gerente</h2>
+              </div>
+            </div>
+          </div>
+          <div class="col mt-3 mb-3">
+            <form>
+              <div class="form-group">
+                <div class="input-group input-group-alternative mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                  </div>
+                  <!-- <input class="form-control" placeholder="Nome" type="text" [(ngModel)]="manager.name" required /> -->
+                  <input class="form-control" placeholder="Nome" type="text" required />
+                </div>
+              </div>
+  
+              <div class="form-group">
+                <div class="input-group input-group-alternative mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ni ni-badge"></i></span>
+                  </div>
+                  <!-- <input class="form-control" placeholder="CPF" type="number" [(ngModel)]="manager.cpf" required /> -->
+                  <input class="form-control" placeholder="CPF" type="number" required />
+                </div>
+              </div>
+  
+              <div class="form-group">
+                <div class="input-group input-group-alternative mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                  </div>
+                  <!-- <input class="form-control" placeholder="Email" type="email" [(ngModel)]="manager.email" required /> -->
+                  <input class="form-control" placeholder="Email" type="email" required />
+                </div>
+              </div>
+  
+              <div class="form-group">
+                <div class="input-group input-group-alternative mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ni ni-mobile-button"></i></span>
+                  </div>
+                  <!-- <input class="form-control" placeholder="Telefone/Celular" type="number" [(ngModel)]="manager.cellphone" required /> -->
+                  <input class="form-control" placeholder="Telefone/Celular" type="number" required />
+                </div>
+              </div>
+  
+              <div class="text-center">
+                <!-- <button type="submit" class="btn btn-primary mt-4">
+                  {{ isEditMode ? 'Atualizar' : 'Salvar' }}
+                </button> -->
+                <button type="submit" class="btn btn-primary mt-4">
+                  Salvar
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -10,6 +10,8 @@ import { AdminLayoutRoutes } from "./admin-layout.routing";
 import { DashboardComponent } from "../../pages/dashboard/dashboard.component";
 import { IconsComponent } from "../../pages/icons/icons.component";
 import { MapsComponent } from "../../pages/maps/maps.component";
+import { AdminComponent } from "src/app/pages/admin/admin.component";
+import { ManagersComponent } from "src/app/pages/managers/managers.component";
 import { SaqueComponent } from "../../pages/saque/saque.component";
 import { DepositoComponent } from "../../pages/deposito/deposito.component";
 import { ExtratoComponent } from "../../pages/extrato/extrato.component";
@@ -26,9 +28,11 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     HttpClientModule,
     NgbModule,
     ClipboardModule,
-  ],
+  ], 
   declarations: [
     DashboardComponent,
+    AdminComponent,
+    ManagersComponent,
     UserProfileComponent,
     IconsComponent,
     MapsComponent,

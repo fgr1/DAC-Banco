@@ -14,6 +14,8 @@ import { AppRoutingModule } from "./app.routing";
 import { ComponentsModule } from "./components/components.module";
 import { ClientComponent } from "./pages/client/client.component";
 import { ClientsComponent } from "./pages/clients/clients.component";
+// import { AdminComponent } from './pages/admin/admin.component';
+// import { ManagersComponent } from './pages/managers/managers.component';
 
 @NgModule({
   imports: [
@@ -31,6 +33,8 @@ import { ClientsComponent } from "./pages/clients/clients.component";
     AuthLayoutComponent,
     ClientsComponent,
     ClientComponent,
+    // AdminComponent,
+    // ManagersComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],
