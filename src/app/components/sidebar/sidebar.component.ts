@@ -13,22 +13,15 @@ declare interface RouteInfo {
 export const ROUTES: RouteInfo[] = [
   {
     path: "/dashboard",
-    title: "Dashboard",
+    title: "Tela inicial",
     icon: "ni-tv-2 text-primary",
     class: "",
     permission: ["administrator"],
   },
   {
     path: "/icons",
-    title: "Icons",
+    title: "Detalhes dos gerentes",
     icon: "ni-planet text-blue",
-    class: "",
-    permission: ["administrator"],
-  },
-  {
-    path: "/maps",
-    title: "Maps",
-    icon: "ni-pin-3 text-orange",
     class: "",
     permission: ["administrator"],
   },
@@ -80,7 +73,14 @@ export const ROUTES: RouteInfo[] = [
     icon: "ni-single-02 text-blue",
     class: "",
     permission: ["manager"],
-  }
+  },
+  {
+    path: "/clientes-fieis",
+    title: "Maiores clientes",
+    icon: "ni-single-02 text-blue",
+    class: "",
+    permission: ["manager"],
+  },
 ];
 
 @Component({

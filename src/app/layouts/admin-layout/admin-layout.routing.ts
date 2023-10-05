@@ -7,10 +7,10 @@ import { DashboardComponent } from "../../pages/dashboard/dashboard.component";
 import { DepositoComponent } from "../../pages/deposito/deposito.component";
 import { ExtratoComponent } from "../../pages/extrato/extrato.component";
 import { IconsComponent } from "../../pages/icons/icons.component";
-import { MapsComponent } from "../../pages/maps/maps.component";
 import { SaqueComponent } from "../../pages/saque/saque.component";
 import { TransferenciaComponent } from "../../pages/transferencia/transferencia.component";
 import { UserProfileComponent } from "../../pages/user-profile/user-profile.component";
+import { ClientesFieisComponent } from "../../pages/clientes-fieis/clientes-fieis.component";
 import { AuthGuard } from "./auth.guard";
 
 export const AdminLayoutRoutes: Routes = [
@@ -34,6 +34,14 @@ export const AdminLayoutRoutes: Routes = [
   {
     path: "signup-validation",
     component: SignupValidationComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: "manager",
+    },
+  },
+  {
+    path: "clientes-fieis",
+    component: ClientesFieisComponent,
     canActivate: [AuthGuard],
     data: {
       role: "manager",
@@ -82,14 +90,6 @@ export const AdminLayoutRoutes: Routes = [
   {
     path: "icons",
     component: IconsComponent,
-    canActivate: [AuthGuard],
-    data: {
-      role: "administrator",
-    },
-  },
-  {
-    path: "maps",
-    component: MapsComponent,
     canActivate: [AuthGuard],
     data: {
       role: "administrator",
