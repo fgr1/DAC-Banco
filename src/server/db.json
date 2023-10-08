@@ -9,6 +9,8 @@
       "cellphone": 123,
       "type": "client",
       "salary": 5000,
+      "status": "pendente",
+      "manager": "Pedro",
       "address": {
         "cep": "82840-180",
         "logradouro": "Rua Gastão Luiz Cruls",

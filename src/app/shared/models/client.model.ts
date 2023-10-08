@@ -9,6 +9,8 @@ export class Client extends MODEL.User {
     public password?: string,
     public cellphone?: string,
     public type?: string,
+    public status?: string,
+    public manager?: string,
 
     public salary?: string,
     public address?: MODEL.Address

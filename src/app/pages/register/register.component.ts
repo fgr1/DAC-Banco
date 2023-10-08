@@ -109,6 +109,8 @@ export class RegisterComponent implements OnInit {
       cellphone,
       "client",
       salary,
+      "pendente",
+      "Pedro", //manager
       address
     );
 
