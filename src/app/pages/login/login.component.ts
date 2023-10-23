@@ -81,7 +81,7 @@ export class LoginComponent implements OnInit {
         route = "/signup-validation";
         break;
       default:
-        route = "/dashboard";
+        route = "/register";
     }
 
     this.router.navigate([route]);

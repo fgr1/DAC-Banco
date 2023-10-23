@@ -1,4 +1,11 @@
-<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-size: cover; background-position: center top;">
+<div
+  class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+  style="
+    min-height: 600px;
+    background-size: cover;
+    background-position: center top;
+  "
+>
   <!-- Mask -->
   <span class="mask bg-gradient-danger opacity-8"></span>
   <!-- Header container -->
@@ -6,7 +13,9 @@
     <div class="row">
       <div class="col-lg-10 col-md-10">
         <h1 class="display-2 text-white">Seja bem vindo Cliente</h1>
-        <p class="text-white mt-0 mb-5">O seu saldo em conta é de R$ 5.037,63</p>
+        <p class="text-white mt-0 mb-5">
+          O seu saldo em conta é de R$ 5.037,63
+        </p>
       </div>
     </div>
   </div>
@@ -16,6 +25,22 @@
     <div class="col-xl-8 order-xl-1">
       <div class="card bg-secondary shadow">
         <div class="card-header bg-white border-0">
+          <div>
+            <div class="text-center">
+              <button
+                class="btn btn-primary my-4"
+                [routerLink]="['/transferencia']"
+              >
+                Transferir
+              </button>
+              <button class="btn btn-success my-4" [routerLink]="['/saque']">
+                Sacar
+              </button>
+              <button class="btn btn-warning my-4" [routerLink]="['/deposito']">
+                Depositar
+              </button>
+            </div>
+          </div>
           <div class="row align-items-center">
             <div class="col-8">
               <h3 class="mb-0">Minha conta</h3>
@@ -24,80 +49,162 @@
         </div>
         <div class="card-body">
           <form>
-            <h6 class="heading-small text-muted mb-4">Informações do usuário</h6>
+            <h6 class="heading-small text-muted mb-4">
+              Informações do usuário
+            </h6>
             <div class="pl-lg-4">
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-username">Nome</label>
-                    <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="lucky.jesse">
+                    <label class="form-control-label" for="input-username"
+                      >Nome</label
+                    >
+                    <input
+                      type="text"
+                      id="input-username"
+                      class="form-control form-control-alternative"
+                      placeholder="Username"
+                      value="lucky.jesse"
+                    />
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-email">E-mail</label>
-                    <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="jesse@example.com">
+                    <label class="form-control-label" for="input-email"
+                      >E-mail</label
+                    >
+                    <input
+                      type="email"
+                      id="input-email"
+                      class="form-control form-control-alternative"
+                      placeholder="jesse@example.com"
+                    />
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-first-name">CPF</label>
-                    <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="100.000.000-00" value="100.000.000-00">
+                    <label class="form-control-label" for="input-first-name"
+                      >CPF</label
+                    >
+                    <input
+                      type="text"
+                      id="input-first-name"
+                      class="form-control form-control-alternative"
+                      placeholder="100.000.000-00"
+                      value="100.000.000-00"
+                    />
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-last-name">Telefone</label>
-                    <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="(41) 99999-9999" value="(41) 99999-9999">
+                    <label class="form-control-label" for="input-last-name"
+                      >Telefone</label
+                    >
+                    <input
+                      type="text"
+                      id="input-last-name"
+                      class="form-control form-control-alternative"
+                      placeholder="(41) 99999-9999"
+                      value="(41) 99999-9999"
+                    />
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-first-name">Salário</label>
-                    <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="R$ 2.500,00" value="R$ 2.500,00">
+                    <label class="form-control-label" for="input-first-name"
+                      >Salário</label
+                    >
+                    <input
+                      type="text"
+                      id="input-first-name"
+                      class="form-control form-control-alternative"
+                      placeholder="R$ 2.500,00"
+                      value="R$ 2.500,00"
+                    />
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-last-name">Limite</label>
-                    <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="R$ 3.000,00" value="R$ 3.000,00">
+                    <label class="form-control-label" for="input-last-name"
+                      >Limite</label
+                    >
+                    <input
+                      type="text"
+                      id="input-last-name"
+                      class="form-control form-control-alternative"
+                      placeholder="R$ 3.000,00"
+                      value="R$ 3.000,00"
+                    />
                   </div>
                 </div>
               </div>
             </div>
             <hr class="my-4" />
             <!-- Address -->
-            <h6 class="heading-small text-muted mb-4">Informações de contato</h6>
+            <h6 class="heading-small text-muted mb-4">
+              Informações de contato
+            </h6>
             <div class="pl-lg-4">
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-address">Endereço</label>
-                    <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
+                    <label class="form-control-label" for="input-address"
+                      >Endereço</label
+                    >
+                    <input
+                      id="input-address"
+                      class="form-control form-control-alternative"
+                      placeholder="Home Address"
+                      value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"
+                      type="text"
+                    />
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-lg-4">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-city">Cidade</label>
-                    <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" value="New York">
+                    <label class="form-control-label" for="input-city"
+                      >Cidade</label
+                    >
+                    <input
+                      type="text"
+                      id="input-city"
+                      class="form-control form-control-alternative"
+                      placeholder="City"
+                      value="New York"
+                    />
                   </div>
                 </div>
                 <div class="col-lg-4">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-country">País</label>
-                    <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="Country" value="United States">
+                    <label class="form-control-label" for="input-country"
+                      >País</label
+                    >
+                    <input
+                      type="text"
+                      id="input-country"
+                      class="form-control form-control-alternative"
+                      placeholder="Country"
+                      value="United States"
+                    />
                   </div>
                 </div>
                 <div class="col-lg-4">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-country">CEP</label>
-                    <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="CEP">
+                    <label class="form-control-label" for="input-country"
+                      >CEP</label
+                    >
+                    <input
+                      type="number"
+                      id="input-postal-code"
+                      class="form-control form-control-alternative"
+                      placeholder="CEP"
+                    />
                   </div>
                 </div>
               </div>
@@ -108,14 +215,28 @@
             <div class="row">
               <div class="col-lg-6">
                 <div class="form-group">
-                  <label class="form-control-label" for="input-city">Número da conta</label>
-                  <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="Número da conta">
+                  <label class="form-control-label" for="input-city"
+                    >Número da conta</label
+                  >
+                  <input
+                    type="text"
+                    id="input-city"
+                    class="form-control form-control-alternative"
+                    placeholder="Número da conta"
+                  />
                 </div>
               </div>
               <div class="col-lg-6">
                 <div class="form-group">
-                  <label class="form-control-label" for="input-country">Gerente</label>
-                  <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="Gerente">
+                  <label class="form-control-label" for="input-country"
+                    >Gerente</label
+                  >
+                  <input
+                    type="text"
+                    id="input-country"
+                    class="form-control form-control-alternative"
+                    placeholder="Gerente"
+                  />
                 </div>
               </div>
             </div>
