@@ -28,6 +28,11 @@ export class AuthService {
     localStorage[this.LS_KEY] = JSON.stringify(user);
   }
 
+  getUserIdLogged(): string | null {
+    const userLogged = this.userLogged;
+    return userLogged ? userLogged.id : null;
+  }
+
   login(login: MODEL.Login): Observable<MODEL.User | null> {
     const params = new HttpParams()
       .set("email", login.email)

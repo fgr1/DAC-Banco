@@ -1,6 +1,6 @@
 <div class="container mt-5">
     <h1>Consulta de Extrato</h1>
-    <form>
+    <form (ngSubmit)="consultarExtrato()">
       <div class="form-row">
         <div class="col">
           <label for="dataInicio">Data de Início:</label>
@@ -9,17 +9,25 @@
             class="form-control"
             id="dataInicio"
             name="dataInicio"
+            [(ngModel)]="dataInicio"
           />
         </div>
         <div class="col">
           <label for="dataFim">Data de Fim:</label>
-          <input type="date" class="form-control" id="dataFim" name="dataFim" />
+          <input
+            type="date"
+            class="form-control"
+            id="dataFim"
+            name="dataFim"
+            [(ngModel)]="dataFim"
+          />
         </div>
       </div>
       <button type="submit" class="btn btn-primary mt-3">
         Consultar Extrato
       </button>
     </form>
+    
   
     <h2 class="mt-5">Extrato</h2>
     <table class="table">
@@ -27,25 +35,19 @@
         <tr>
           <th>Data/Hora da Transação</th>
           <th>Operação</th>
-          <th>Cliente Origem/Destino</th>
+          <th>Conta Origem</th>
+          <th>Conta Destino</th>
           <th>Valor</th>
         </tr>
       </thead>
       <tbody>
-        <!-- Aqui você pode adicionar os registros do extrato usando um loop em sua linguagem de backend -->
-        <tr class="text-danger">
-          <td>2023-09-27 10:30:00</td>
-          <td>Saque</td>
-          <td></td>
-          <td>-100.00</td>
+        <tr *ngFor="let movimentacao of movimentacoes" [ngClass]="{'text-danger': isSaida(movimentacao), 'text-primary': isEntrada(movimentacao)}">
+          <td>{{ movimentacao.data_hora }}</td>
+          <td>{{ movimentacao.tipo }}</td>
+          <td>{{ movimentacao.id_conta_origem }}</td>
+          <td>{{ movimentacao.id_conta_destino }}</td>
+          <td>{{ formatarSaldo(movimentacao.valor) }}</td>
         </tr>
-        <tr class="text-primary">
-          <td>2023-09-27 14:45:00</td>
-          <td>Depósito</td>
-          <td></td>
-          <td>500.00</td>
-        </tr>
-        <!-- Adicione mais linhas de acordo com os dados do extrato -->
       </tbody>
     </table>
   
@@ -60,8 +62,8 @@
       <tbody>
         <!-- Aqui você pode adicionar os saldos consolidados usando um loop em sua linguagem de backend -->
         <tr>
-          <td>2023-09-27</td>
-          <td>400.00</td>
+          <td>{{ dataAtual }}</td>
+          <td>{{ formatarSaldo(saldoConta) }}</td>
         </tr>
         <!-- Adicione mais linhas de acordo com os dados consolidados -->
       </tbody>

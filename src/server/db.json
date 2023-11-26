@@ -10,7 +10,7 @@
       "type": "client",
       "salary": 5000,
       "status": "pendente",
-      "manager": "Pedro",
+      "manager": 3,
       "address": {
         "cep": "82840-180",
         "logradouro": "Rua Gastão Luiz Cruls",
@@ -46,6 +46,106 @@
       "password": "123",
       "cellphone": 123,
       "type": "manager"
+    },
+    {
+      "id": 4,
+      "name": "José",
+      "cpf": 123,
+      "email": "client2@email.com",
+      "password": "123",
+      "cellphone": 123,
+      "type": "client",
+      "salary": 5000,
+      "status": "pendente",
+      "manager": 3,
+      "address": {
+        "cep": "82840-180",
+        "logradouro": "Rua Gastão Luiz Cruls",
+        "complemento": "até 1844/1845",
+        "bairro": "Bairro Alto",
+        "localidade": "Curitiba",
+        "uf": "PR"
+      }
+    }
+  ],
+  "movimentacoes": [
+    {
+      "id": 1,
+      "data_hora": "11/11/2023 11:20:03",
+      "tipo": "saque",
+      "valor": 2500,
+      "id_conta_origem": 1,
+      "id_conta_destino": null,
+      "id_cliente_origem": 1,
+      "id_cliente_destino": null
+    },
+    {
+      "data_hora": "12/11/2023 11:10:03",
+      "tipo": "saque",
+      "valor": "2500.50",
+      "id_conta_origem": 1,
+      "id_conta_destino": null,
+      "id_cliente_origem": 1,
+      "id_cliente_destino": null,
+      "id": 9
+    },
+    {
+      "data_hora": "13/11/2023 11:20:01",
+      "tipo": "saque",
+      "valor": "2500",
+      "id_conta_origem": 1,
+      "id_conta_destino": null,
+      "id_cliente_origem": 1,
+      "id_cliente_destino": null,
+      "id": 10
+    },
+    {
+      "data_hora": "17/11/2023 11:20:02",
+      "tipo": "deposito",
+      "valor": "100",
+      "id_conta_origem": null,
+      "id_conta_destino": "1",
+      "id_cliente_origem": null,
+      "id_cliente_destino": "1",
+      "id": 36
+    },
+    {
+      "data_hora": "10/11/2023 11:20:02",
+      "tipo": "transferencia",
+      "valor": "1",
+      "id_conta_origem": "1",
+      "id_conta_destino": "2",
+      "id_cliente_origem": 1,
+      "id_cliente_destino": "4",
+      "id": 37
+    },
+    {
+      "data_hora": "10/11/2023 11:20:02",
+      "tipo": "transferencia",
+      "valor": "1",
+      "id_conta_origem": "2",
+      "id_conta_destino": "1",
+      "id_cliente_origem": 4,
+      "id_cliente_destino": "1",
+      "id": 38
+    }
+  ],
+  "bank-accounts": [
+    {
+      "accountNumber": "1",
+      "accountLimit": 2000,
+      "client": "1",
+      "manager": "3",
+      "created_at": "10/11/2023",
+      "saldo": 3500
+    },
+    {
+      "accountNumber": "2",
+      "accountLimit": 2000,
+      "client": "4",
+      "manager": "3",
+      "created_at": "10/11/2023",
+      "saldo": 3500
     }
   ]
 }
