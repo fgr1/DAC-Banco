@@ -16,28 +16,37 @@
           <table class="table">
             <tr>
               <th>CPF</th>
-              <td>123.456.789-01</td>
+              <td>{{ client?.cpf }}</td>
             </tr>
             <tr>
               <th>Nome</th>
-              <td>João da Silva</td>
+              <td>{{ client?.name }}</td>
             </tr>
             <tr>
               <th>Cidade</th>
-              <td>São Paulo</td>
+              <td>{{ client?.address?.localidade }}</td>
             </tr>
             <tr>
               <th>Estado</th>
-              <td>SP</td>
+              <td>{{ client?.address?.uf }}</td>
+            </tr>
+            <tr>
+              <th>Salário</th>
+              <td>{{ client?.salary }}</td>
             </tr>
           </table>
           <h4>Dados da Conta</h4>
           <table class="table">
             <tr>
+              <th>Número da Conta</th>
+              <td>{{ conta }}</td>
+            </tr>
+            <tr>
               <th>Saldo da Conta</th>
-              <td>$ 1,000.00</td>
+              <td>{{ saldoConta }}</td>
             </tr>
           </table>
+        </div>
         </div>
         <div class="card-footer">
           <a [routerLink]="['/clients']" class="btn btn-primary">Voltar para Lista de Clientes</a>
@@ -45,4 +54,4 @@
       </div>
     </div>
   </div>
-</div>
+

@@ -1,6 +1,18 @@
 <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
   <div class="container-fluid">
     <div class="header-body">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Pesquisar por CPF" [(ngModel)]="searchCPF" (input)="applyFilter()">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Pesquisar por Nome" [(ngModel)]="searchName" (input)="applyFilter()">
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -24,35 +36,13 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">123.456.789-01</th>
-                <td>João da Silva</td>
-                <td>São Paulo</td>
-                <td>SP</td>
-                <td>$ 1,000.00</td>
-                <td>
-                  <a [routerLink]="['/client', 1]" class="btn btn-sm btn-primary">Ver Detalhes</a>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">987.654.321-00</th>
-                <td>Maria Souza</td>
-                <td>Rio de Janeiro</td>
-                <td>RJ</td>
-                <td>$ 2,000.00</td>
-                <td>
-                  <a [routerLink]="['/client', 2]" class="btn btn-sm btn-primary">Ver Detalhes</a>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">555.888.777-44</th>
-                <td>Pedro Oliveira</td>
-                <td>Salvador</td>
-                <td>BA</td>
-                <td>$ 3,000.00</td>
-                <td>
-                  <a [routerLink]="['/client', 3]" class="btn btn-sm btn-primary">Ver Detalhes</a>
-                </td>
+              <tr *ngFor="let client of filteredClients">
+                <td>{{ client?.cpf }}</td>
+                <td>{{ client?.name }}</td>
+                <td>{{ client?.address.localidade }}</td>
+                <td>{{ client?.address.uf }}</td>
+                <td>{{ client?.salary }}</td>
+                <td><a [routerLink]="['/client', client.id]" class="btn btn-sm btn-primary">Ver Detalhes</a></td>
               </tr>
             </tbody>
           </table>

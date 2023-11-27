@@ -61,7 +61,7 @@ export const ROUTES: RouteInfo[] = [
     permission: ["client"],
   },
   {
-    path: "/signup-validation",
+    path: "/tables",
     title: "Gerenciar auto-cadastro",
     icon: "ni-check-bold text-green",
     class: "",

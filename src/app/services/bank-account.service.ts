@@ -74,6 +74,27 @@ export class BankAccountService {
     return of(null); // Importe 'of' a partir do 'rxjs'
   }
 
+  // Método para obter os clientes das contas do gerente logado
+  getClientsOfManagerLogged(managerId: string): Observable<string[]> {
+    return this.httpClient
+      .get<MODEL.BankAccount[]>(
+        `${this.BASE_URL}?manager=${managerId}`,
+        this.httpOptions
+      )
+      .pipe(
+        map((accounts: MODEL.BankAccount[]) => {
+          const clients: string[] = [];
+          accounts.forEach((account) => {
+            if (account.client) {
+              clients.push(account.client);
+            }
+          });
+          return clients;
+        }),
+        catchError(() => of([])) // Trata erros da requisição retornando um array vazio
+      );
+  }
+
   delete(id: number): Observable<MODEL.BankAccount> {
     return this.httpClient.delete<MODEL.BankAccount>(
       this.BASE_URL + id,

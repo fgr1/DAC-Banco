@@ -5,6 +5,7 @@ import { ClientsComponent } from "src/app/pages/clients/clients.component";
 import { SignupValidationComponent } from "src/app/pages/signup-validation/signup-validation.component";
 import { DashboardComponent } from "../../pages/dashboard/dashboard.component";
 import { DepositoComponent } from "../../pages/deposito/deposito.component";
+import { TablesComponent } from "../../pages/tables/tables.component";
 import { ExtratoComponent } from "../../pages/extrato/extrato.component";
 import { IconsComponent } from "../../pages/icons/icons.component";
 import { SaqueComponent } from "../../pages/saque/saque.component";
@@ -34,6 +35,14 @@ export const AdminLayoutRoutes: Routes = [
   {
     path: "signup-validation",
     component: SignupValidationComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: "manager",
+    },
+  },
+  {
+    path: "tables",
+    component: TablesComponent,
     canActivate: [AuthGuard],
     data: {
       role: "manager",

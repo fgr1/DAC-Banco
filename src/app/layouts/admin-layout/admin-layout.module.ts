@@ -15,6 +15,7 @@ import { ExtratoComponent } from "../../pages/extrato/extrato.component";
 import { TransferenciaComponent } from "../../pages/transferencia/transferencia.component";
 import { UserProfileComponent } from "../../pages/user-profile/user-profile.component";
 import { ClientesFieisComponent } from "../../pages/clientes-fieis/clientes-fieis.component";
+import { TablesComponent } from "../../pages/tables/tables.component";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 // import { ToastrModule } from 'ngx-toastr';
 
@@ -36,6 +37,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     TransferenciaComponent,
     ExtratoComponent,
     ClientesFieisComponent,
+    TablesComponent,
   ],
 })
 export class AdminLayoutModule {}

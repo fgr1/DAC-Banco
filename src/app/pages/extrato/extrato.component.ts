@@ -3,9 +3,6 @@ import { MovimentacaoService } from "../../services/movimentacao.service";
 import { AuthService } from "../../services/auth.service";
 import { Movimentacao } from "../../shared/models/movimentacao.model";
 import { BankAccountService } from "../../services/bank-account.service";
-import { map, switchMap } from "rxjs/operators";
-import { Observable } from "rxjs";
-import { of } from "rxjs";
 
 @Component({
   selector: "app-extrato",

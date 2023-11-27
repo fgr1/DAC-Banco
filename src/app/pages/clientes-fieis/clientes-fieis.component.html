@@ -23,26 +23,12 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">123.456.789-01</th>
-                  <td>João da Silva</td>
-                  <td>São Paulo</td>
-                  <td>SP</td>
-                  <td>$ 3,500.00</td>
-                </tr>
-                <tr>
-                  <th scope="row">987.654.321-00</th>
-                  <td>Maria Souza</td>
-                  <td>Rio de Janeiro</td>
-                  <td>RJ</td>
-                  <td>$ 2,000.00</td>
-                </tr>
-                <tr>
-                  <th scope="row">555.888.777-44</th>
-                  <td>Pedro Oliveira</td>
-                  <td>Salvador</td>
-                  <td>BA</td>
-                  <td>$ 1,000.00</td>
+                <tr *ngFor="let client of filteredClients">
+                  <td>{{ client?.cpf }}</td>
+                  <td>{{ client?.name }}</td>
+                  <td>{{ client?.address.localidade }}</td>
+                  <td>{{ client?.address.uf }}</td>
+                  <td>{{ client?.salary }}</td>
                 </tr>
               </tbody>
             </table>
