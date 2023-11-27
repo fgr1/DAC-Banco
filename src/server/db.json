@@ -8,6 +8,8 @@
       "cellphone": "(41) 98123-7565",
       "salary": "R$ 4.000,00",
       "status": "aprovado",
+      "type": "client",
+      "password": "123",
       "address": {
         "cep": "82840-180",
         "logradouro": "Rua Gastão Luiz Cruls",
@@ -36,11 +38,11 @@
     },
     {
       "id": 3,
-      "name": "Pedro",
-      "cpf": 123,
+      "name": "Pedro Horning",
+      "cpf": "123.586.987-85",
       "email": "manager@email.com",
       "password": "123",
-      "cellphone": 123,
+      "cellphone": "(41) 98123-4256",
       "type": "manager"
     },
     {
@@ -51,6 +53,8 @@
       "cellphone": "(41) 98123-7565",
       "salary": "R$ 5.000,00",
       "status": "pendente",
+      "password": "123",
+      "type": "client",
       "address": {
         "cep": "82840-180",
         "logradouro": "Rua Gastão Luiz Cruls",

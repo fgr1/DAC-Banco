@@ -110,7 +110,7 @@ export class RegisterComponent implements OnInit {
       "client",
       salary,
       "pendente",
-      "Pedro", //manager
+      "3", //manager
       address
     );
 

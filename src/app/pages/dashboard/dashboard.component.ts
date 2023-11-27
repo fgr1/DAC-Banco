@@ -1,60 +1,60 @@
-import { Component, OnInit } from '@angular/core';
-import Chart from 'chart.js';
-
-// core components
-import {
-  chartOptions,
-  parseOptions,
-  chartExample1,
-  chartExample2
-} from "../../variables/charts";
+import { Component, OnInit } from "@angular/core";
+import { ClientService } from "../../services/client.service";
+import { BankAccountService } from "../../services/bank-account.service";
+import { MODEL } from "../../shared";
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  selector: "app-dashboard",
+  templateUrl: "./dashboard.component.html",
+  styleUrls: ["./dashboard.component.scss"],
 })
 export class DashboardComponent implements OnInit {
+  clients: MODEL.Client[] = [];
 
-  public datasets: any;
-  public data: any;
-  public salesChart;
-  public clicked: boolean = true;
-  public clicked1: boolean = false;
+  constructor(
+    private clientService: ClientService,
+    private bankAccountService: BankAccountService
+  ) {}
 
   ngOnInit() {
+    this.loadClients();
+  }
 
-    this.datasets = [
-      [0, 20, 10, 30, 15, 40, 20, 60, 60],
-      [0, 20, 5, 25, 10, 30, 15, 40, 40]
-    ];
-    this.data = this.datasets[0];
+  // Seu componente Angular
+  loadClients() {
+    this.clientService.getAll().subscribe((data) => {
+      const clients = data.filter((client) => client.type === "client");
 
+      // Mapa para armazenar os detalhes da conta por ID do cliente
+      const accountDetailsMap: { [clientId: string]: MODEL.BankAccount } = {};
 
-    var chartOrders = document.getElementById('chart-orders');
+      // Cria uma função para buscar os detalhes da conta por ID do cliente
+      const getAccountDetails = (clientId: string) => {
+        return this.bankAccountService
+          .getAccountByLoggedUser(clientId)
+          .subscribe((accountDetails) => {
+            const clientDetails: MODEL.BankAccount = {
+              client: clientId,
+              accountLimit: accountDetails.accountLimit,
+              manager: accountDetails.manager,
+              saldo: accountDetails.saldo,
+            };
+            accountDetailsMap[clientId] = clientDetails;
+          });
+      };
 
-    parseOptions(Chart, chartOptions());
+      // Busca os detalhes da conta para cada cliente
+      clients.forEach((client) => {
+        getAccountDetails(client.id);
+      });
 
-
-    var ordersChart = new Chart(chartOrders, {
-      type: 'bar',
-      options: chartExample2.options,
-      data: chartExample2.data
+      // Espera pela resolução de todas as chamadas assíncronas antes de associar os detalhes da conta aos clientes
+      setTimeout(() => {
+        clients.forEach((client) => {
+          client["accountDetails"] = accountDetailsMap[client.id];
+        });
+        this.clients = clients;
+      }, 1000); // Tempo de espera para garantir que todas as chamadas assíncronas sejam concluídas (ajuste conforme necessário)
     });
-
-    var chartSales = document.getElementById('chart-sales');
-
-    this.salesChart = new Chart(chartSales, {
-			type: 'line',
-			options: chartExample1.options,
-			data: chartExample1.data
-		});
   }
-
-
-  public updateOptions() {
-    this.salesChart.data.datasets[0].data = this.data;
-    this.salesChart.update();
-  }
-
 }
