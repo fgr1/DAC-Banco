@@ -8,12 +8,11 @@
       "cellphone": "(41) 98123-7565",
       "salary": "R$ 4.000,00",
       "status": "aprovado",
-      "type": "client",
       "password": "123",
+      "type": "client",
       "address": {
         "cep": "82840-180",
         "logradouro": "Rua Gastão Luiz Cruls",
-        "complemento": "até 1844/1845",
         "bairro": "Bairro Alto",
         "localidade": "Curitiba",
         "uf": "PR"
@@ -52,7 +51,7 @@
       "email": "client1@email.com",
       "cellphone": "(41) 98123-7565",
       "salary": "R$ 5.000,00",
-      "status": "pendente",
+      "status": "aprovado",
       "password": "123",
       "type": "client",
       "address": {

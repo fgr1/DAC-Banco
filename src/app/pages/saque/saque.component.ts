@@ -25,9 +25,20 @@ export class SaqueComponent implements OnInit {
   }
 
   fazerSaque(): void {
-    const valorSaque = (
-      document.getElementById("input-valor") as HTMLInputElement
-    ).value;
+    const valorSaque = parseFloat(
+      (document.getElementById("input-valor") as HTMLInputElement).value
+    );
+
+    if (!isNaN(valorSaque)) {
+      const saqueNumerico = parseFloat(this.saldoConta);
+      if (!isNaN(saqueNumerico)) {
+        this.saldoConta = (saqueNumerico - valorSaque).toString();
+      } else {
+        console.error("Valor do saldo inválido.");
+      }
+    } else {
+      console.error("Valor de saque inválido.");
+    }
 
     const idClienteOrigem = this.authService.getUserIdLogged(); // Obtém o ID do cliente logado
 
@@ -40,7 +51,7 @@ export class SaqueComponent implements OnInit {
             const movimentacao: Movimentacao = {
               data_hora: null,
               tipo: "saque",
-              valor: valorSaque,
+              valor: valorSaque.toString(),
               id_conta_origem: idContaOrigem, // Define o ID da conta de onde o saque será feito
               id_conta_destino: null,
               id_cliente_origem: idClienteOrigem, // Utiliza o ID do cliente logado

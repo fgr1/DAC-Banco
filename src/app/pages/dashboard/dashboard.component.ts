@@ -1,7 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { ClientService } from "../../services/client.service";
 import { BankAccountService } from "../../services/bank-account.service";
+import { GerenteService } from "../../services/gerente.service";
 import { MODEL } from "../../shared";
+import { map } from "rxjs/operators";
+import { forkJoin } from "rxjs";
 
 @Component({
   selector: "app-dashboard",
@@ -10,51 +13,61 @@ import { MODEL } from "../../shared";
 })
 export class DashboardComponent implements OnInit {
   clients: MODEL.Client[] = [];
+  clientAccountDetails: Map<string, MODEL.BankAccount> = new Map();
 
   constructor(
     private clientService: ClientService,
-    private bankAccountService: BankAccountService
+    private bankAccountService: BankAccountService,
+    private gerenteService: GerenteService
   ) {}
 
   ngOnInit() {
     this.loadClients();
   }
 
-  // Seu componente Angular
   loadClients() {
     this.clientService.getAll().subscribe((data) => {
       const clients = data.filter((client) => client.type === "client");
+      this.clients = clients;
 
-      // Mapa para armazenar os detalhes da conta por ID do cliente
-      const accountDetailsMap: { [clientId: string]: MODEL.BankAccount } = {};
+      forkJoin(
+        this.clients.map((client) =>
+          this.bankAccountService.getAccountByLoggedUser(client.id).pipe(
+            map((accountDetails: MODEL.BankAccount) => ({
+              clientId: client.id || "",
+              accountDetails: accountDetails || null,
+            }))
+          )
+        )
+      ).subscribe(
+        (
+          details: {
+            clientId: string;
+            accountDetails: MODEL.BankAccount | null;
+          }[]
+        ) => {
+          const clientAccountDetails = new Map<string, MODEL.BankAccount>();
 
-      // Cria uma função para buscar os detalhes da conta por ID do cliente
-      const getAccountDetails = (clientId: string) => {
-        return this.bankAccountService
-          .getAccountByLoggedUser(clientId)
-          .subscribe((accountDetails) => {
-            const clientDetails: MODEL.BankAccount = {
-              client: clientId,
-              accountLimit: accountDetails.accountLimit,
-              manager: accountDetails.manager,
-              saldo: accountDetails.saldo,
-            };
-            accountDetailsMap[clientId] = clientDetails;
+          details.forEach((detail) => {
+            if (detail.accountDetails) {
+              clientAccountDetails.set(detail.clientId, detail.accountDetails);
+            }
           });
-      };
 
-      // Busca os detalhes da conta para cada cliente
-      clients.forEach((client) => {
-        getAccountDetails(client.id);
-      });
+          // Agora vamos exibir os detalhes no console
+          clientAccountDetails.forEach((value, key) => {
+            console.log(`Detalhes da conta para o cliente ${key}:`, value);
+          });
 
-      // Espera pela resolução de todas as chamadas assíncronas antes de associar os detalhes da conta aos clientes
-      setTimeout(() => {
-        clients.forEach((client) => {
-          client["accountDetails"] = accountDetailsMap[client.id];
-        });
-        this.clients = clients;
-      }, 1000); // Tempo de espera para garantir que todas as chamadas assíncronas sejam concluídas (ajuste conforme necessário)
+          // Definir clientAccountDetails como uma propriedade do componente para uso posterior
+          this.clientAccountDetails = clientAccountDetails;
+
+          console.log(
+            "Detalhes das contas associados aos clientes:",
+            this.clientAccountDetails
+          );
+        }
+      );
     });
   }
 }

@@ -65,23 +65,24 @@
                       <!-- Projects table -->
                       <table class="table align-items-center table-flush">
                         <thead class="thead-light">
-                          <tr>
-                            <th scope="col">Nome</th>
-                            <th scope="col">CPF</th>
-                            <th scope="col">Limite</th>
-                            <th scope="col">Gerente</th>
-                            <th scope="col">Saldo</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let client of clients">
-                            <th scope="row">{{ client.name }}</th>
-                            <td>{{ client.cpf }}</td>
-                            <td>R$ 2.000,00</td>
-                            <td>Pedro</td>
-                            <td>R$ 3.500,00</td>
-                          </tr>
-                        </tbody>
+                            <tr>
+                              <th scope="col">Nome</th>
+                              <th scope="col">CPF</th>
+                              <th scope="col">Limite</th>
+                              <th scope="col">Gerente</th>
+                              <th scope="col">Saldo</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let client of clients">
+                              <th scope="row">{{ client.name }}</th>
+                              <td>{{ client.cpf }}</td>
+                              <td>{{ clientAccountDetails.get(client.id)?.[0]?.accountLimit | currency: 'BRL' || 'N/A' }}</td>
+                              
+                              <td>{{ clientAccountDetails.get(client.id)?.[0]?.manager || 'N/A' }}</td>
+                              <td>{{ clientAccountDetails.get(client.id)?.[0]?.saldo | currency: 'BRL' || 'N/A' }}</td>
+                            </tr>
+                          </tbody>
                       </table>
                     </div>
               </div>
